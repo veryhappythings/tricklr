@@ -12,7 +12,7 @@ Nosy script included in script/test, pip requirements in REQUIREMENTS.
 Cool stuff I'm playing with:
 ----------------------------
 
-virtualenv
-pip
-django
+* virtualenv
+* pip
+* django
 
