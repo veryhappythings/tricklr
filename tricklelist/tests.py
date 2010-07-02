@@ -1,3 +1,4 @@
+import datetime
 from django.test import TestCase
 from django.test.client import Client
 
@@ -33,13 +34,24 @@ class TestTrickleList(TestCase):
         )
 
 class TestListItem(TestCase):
-    def test_completing_an_item(self):
+    def test_completing_an_item_today(self):
         tl = TrickleList(name='Test List')
         tl.save()
         li = tl.listitem_set.create(name='Test item')
         li.complete()
         li.save()
-        self.assert_(li.is_done())
+        self.assertTrue(li.is_done())
+
+    def test_completing_an_item_and_checking_it_tomorrow(self):
+        tl = TrickleList(name='Test List')
+        tl.save()
+        li = tl.listitem_set.create(name='Test item')
+        yesterday = datetime.datetime.utcnow() - datetime.timedelta(days=1)
+        li.complete(date=yesterday)
+        li.save()
+
+        self.assertFalse(li.is_done())
+        self.assertTrue(li.is_done(date=yesterday))
 
 class TestDoneItem(TestCase):
     pass

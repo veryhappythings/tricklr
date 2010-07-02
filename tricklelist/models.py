@@ -20,9 +20,9 @@ class ListItem(models.Model):
     def is_done(self, date=None):
         if date == None:
             date = datetime.datetime.utcnow()
-        return len(self.doneitem_set.select_related().dates('date', 'day')) > 0
+        return len(self.doneitem_set.filter(date__day=date.day)) > 0
 
 class DoneItem(models.Model):
     list_item = models.ForeignKey(ListItem)
-    date = models.DateField()
+    date = models.DateTimeField()
 
