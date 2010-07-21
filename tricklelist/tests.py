@@ -33,13 +33,20 @@ class TestTrickleList(TestCase):
         )
 
 class TestListItem(TestCase):
-    def test_completing_an_item(self):
+    def test_that_new_items_are_not_done_today(self):
+        tl = TrickleList(name='Test List')
+        tl.save()
+        li = tl.listitem_set.create(name='Test item')
+        li.save()
+        self.assertFalse(li.is_done())
+
+    def test_completing_an_item_today(self):
         tl = TrickleList(name='Test List')
         tl.save()
         li = tl.listitem_set.create(name='Test item')
         li.complete()
         li.save()
-        self.assert_(li.is_done())
+        self.assertTrue(li.is_done())
 
 class TestDoneItem(TestCase):
     pass
