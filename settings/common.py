@@ -1,7 +1,11 @@
 # Django settings for tricklr project.
 import os
+import sys
 
-PROJECT_DIR = os.path.dirname(__file__)
+PROJECT_DIR = os.path.join(os.path.dirname(__file__), '..')
+SITE_ROOT = os.path.join(PROJECT_DIR, '..')
+sys.path.append(PROJECT_DIR)
+sys.path.append(SITE_ROOT)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,17 +15,6 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '{0}/../db/development.sqlite3'.format(PROJECT_DIR),  # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -95,5 +88,6 @@ INSTALLED_APPS = (
     'accounts',
 
     'django.contrib.admin',
+    'lettuce.django',
 )
 
