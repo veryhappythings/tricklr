@@ -7,9 +7,15 @@ from django.db import models
 class TrickleList(models.Model):
     name = models.CharField(max_length=100)
 
+    def __unicode__(self):
+        return self.name
+
 class ListItem(models.Model):
     trickle_list = models.ForeignKey(TrickleList)
     name = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return self.name
 
     def complete(self, date=None):
         if date == None:
@@ -25,4 +31,7 @@ class ListItem(models.Model):
 class DoneItem(models.Model):
     list_item = models.ForeignKey(ListItem)
     date = models.DateTimeField()
+
+    def __unicode__(self):
+        return unicode(self.list_item) + ' ' + unicode(self.date)
 

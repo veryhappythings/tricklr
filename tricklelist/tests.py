@@ -12,9 +12,6 @@ class TestTrickleListApp(TestCase):
         response = self.client.get('/this_does_not_exist!/')
         self.assertEqual(response.status_code, 404)
 
-    def test_that_index_page_exists(self):
-        response = self.client.get('/trickle/')
-        self.assertEqual(response.status_code, 200)
 
 class TestTrickleList(TestCase):
     def test_adding_list_items(self):
@@ -34,6 +31,13 @@ class TestTrickleList(TestCase):
         )
 
 class TestListItem(TestCase):
+    def test_that_new_items_are_not_done_today(self):
+        tl = TrickleList(name='Test List')
+        tl.save()
+        li = tl.listitem_set.create(name='Test item')
+        li.save()
+        self.assertFalse(li.is_done())
+
     def test_completing_an_item_today(self):
         tl = TrickleList(name='Test List')
         tl.save()
