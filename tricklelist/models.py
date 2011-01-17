@@ -10,6 +10,11 @@ class TrickleList(models.Model):
     def __unicode__(self):
         return self.name
 
+    def items_for_date(self, date=None):
+        if date == None:
+            date = datetime.datetime.utcnow()
+        return False
+
 class ListItem(models.Model):
     trickle_list = models.ForeignKey(TrickleList)
     name = models.CharField(max_length=50)
