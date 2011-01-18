@@ -4,7 +4,7 @@ Feature: Sign up
   I want to create a user account
 
   Scenario: Log In
-    Given that I have an account
+    Given that I have an account with username "test_user" and password "test_password"
     When I go to the log in page
     And I login with valid credentials
-    Then I should see "Hi, test_user"
+    Then I should see "test_user"

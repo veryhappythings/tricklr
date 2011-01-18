@@ -38,7 +38,7 @@ while (True):
     for i, code_dir in enumerate(code_dirs):
         if checkSumRecurse(code_dir) != vals[i]:
             vals[i]=checkSumRecurse(code_dir)
-            return_value = os.system('./manage.py test')
+            return_value = os.system('django-admin.py test && django-admin.py harvest --settings=settings.test')
             if options.growl:
                 if return_value == 0:
                     message = 'passed'

@@ -5,8 +5,9 @@ from django.core.management import call_command
 
 world.browser = Client()
 
-@before.all
-def initial_setup():
+@before.runserver
+def initial_setup(server):
+    call_command('syncdb', interactive=False)
     call_command('flush', interactive=False)
     call_command('loaddata', 'all')
     setup_test_environment()
