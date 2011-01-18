@@ -25,9 +25,9 @@ def and_i_login_with_valid_credentials(step):
 
 @step(u'Then I should see "(.*)"')
 def then_i_should_see_(step, phrase):
-    print dir(world.response)
-    print world.response
-    print world.response.content
-    print world.response.request
     assert re.search(phrase, world.response.content)
+
+@step(u'Then I should be redirected')
+def then_i_should_be_redirected(step):
+    assert world.response.status_code == 301
 

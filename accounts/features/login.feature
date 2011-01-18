@@ -7,4 +7,4 @@ Feature: Sign up
     Given that I have an account with username "test_user" and password "test_password"
     When I go to the log in page
     And I login with valid credentials
-    Then I should see "test_user"
+    Then I should be redirected
