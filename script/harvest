@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+django-admin.py harvest --settings=settings.test
