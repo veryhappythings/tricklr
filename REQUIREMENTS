@@ -3,3 +3,4 @@ distribute==0.6.10
 wsgiref==0.1.2
 
 lettuce==0.1.18
+selenium==2.0a5
