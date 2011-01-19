@@ -4,3 +4,4 @@ wsgiref==0.1.2
 
 lettuce==0.1.18
 selenium==2.0a5
+nose==1.0.0
