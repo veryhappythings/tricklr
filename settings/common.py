@@ -2,10 +2,12 @@
 import os
 import sys
 
-PROJECT_DIR = os.path.join(os.path.dirname(__file__), '..')
-SITE_ROOT = os.path.join(PROJECT_DIR, '..')
-sys.path.append(PROJECT_DIR)
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
+SITE_ROOT = os.path.join(PROJECT_ROOT, '..')
+APPS_ROOT = os.path.join(PROJECT_ROOT, 'apps')
+sys.path.append(PROJECT_ROOT)
 sys.path.append(SITE_ROOT)
+sys.path.append(APPS_ROOT)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -74,7 +76,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'tricklr.urls'
 
 TEMPLATE_DIRS = (
-    '{0}/templates'.format(PROJECT_DIR)
+    '{0}/templates'.format(PROJECT_ROOT)
 )
 
 INSTALLED_APPS = (
