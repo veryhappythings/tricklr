@@ -2,13 +2,9 @@
 
 {% block content %}
 <p>INDEX</p>
-<p>{{ trickle_list.name }}</p>
 <ul>
-{% for item in trickle_list.listitem_set.all %}
-        <li>
-                {{ item.name }}
-                {% if item.is_done %} - Done {% endif %}
-        </li>
+{% for item in trickle_lists %}
+        <li class='tricklelist'>{{ list.name }}</li>
 {% endfor %}
 </ul>
 {% endblock %}

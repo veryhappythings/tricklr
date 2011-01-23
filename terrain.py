@@ -26,3 +26,7 @@ def prepare_browser_driver(variables):
 def shutdown_browser_driver(results):
     world.browser.stop()
 
+@before.each_scenario
+def reset_data(scenario):
+    call_command('flush', interactive=False)
+    call_command('loaddata', 'all')
