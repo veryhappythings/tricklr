@@ -15,6 +15,10 @@ class TrickleList(models.Model):
             date = datetime.datetime.utcnow()
         return False
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('tricklelist.views.details', [str(self.id)])
+
 class ListItem(models.Model):
     trickle_list = models.ForeignKey(TrickleList)
     name = models.CharField(max_length=50)

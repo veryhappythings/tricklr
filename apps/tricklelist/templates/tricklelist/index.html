@@ -4,7 +4,7 @@
 <p>INDEX</p>
 <ul>
 {% for item in trickle_lists %}
-        <li class='tricklelist'>{{ list.name }}</li>
+<li class='tricklelist'><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
