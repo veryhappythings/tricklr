@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+wget -nc http://selenium.googlecode.com/files/selenium-remote-control-1.0.3.zip
+unzip -n selenium-remote-control-1.0.3.zip -d selenium-server
+cd selenium-server/selenium-server-1.0.3/
+java -jar selenium-server.jar
