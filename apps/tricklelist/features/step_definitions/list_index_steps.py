@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from lettuce import step, world
 from lettuce.django import django_url
-from nose.tools import assert_equal
+from nose.tools import assert_equal, assert_true
 
 from tricklelist.models import TrickleList
 
@@ -26,5 +26,5 @@ def then_i_should_see_n_lists(step, quantity):
 @step(u'Then I should see that list on the list display page')
 def then_i_should_see_that_list_on_the_list_display_page(step):
     lists = TrickleList.objects.all()
-    world.browser.is_text_present(lists[0].name)
+    assert_true(world.browser.is_text_present(lists[0].name))
 

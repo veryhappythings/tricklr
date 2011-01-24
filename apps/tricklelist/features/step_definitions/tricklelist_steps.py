@@ -23,7 +23,14 @@ def given_that_i_am_logged_in(step):
 def and_i_have_n_lists(step, quantity):
     quantity = int(quantity)
     for i in range(quantity):
-        tl = TrickleList(
-            name='Test List {0}'.format(quantity)
-        )
-        tl.save()
+        TrickleList.objects.create(name='Test List {0}'.format(quantity))
+
+@step(u'And I have a list called "(.*)"')
+def and_i_have_a_list_called_name(step, name):
+    TrickleList.objects.create(name=name)
+
+@step(u'And the list "(.*)" contains the item "(.*)"')
+def and_the_list_listname_contains_the_item_itemname(step, listname, itemname):
+    tl = TrickleList.objects.get(name=listname)
+    tl.listitem_set.create(name=itemname)
+

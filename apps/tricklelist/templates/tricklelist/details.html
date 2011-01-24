@@ -3,4 +3,8 @@
 {% block content %}
 <p>DETAILS</p>
 <h2>{{ trickle_list.name }}</h2>
+<ul>
+{% for item in trickle_list.listitem_set.all %}
+        <li>{{ item.name }}</li>
+{% endfor %}
 {% endblock %}
