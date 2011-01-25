@@ -14,7 +14,8 @@ urlpatterns = patterns(
     (r'^admin/', include(admin.site.urls)),
 )
 # Static files - should be served properly
-urlpatterns += patterns('',
-    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-)
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    )
 
