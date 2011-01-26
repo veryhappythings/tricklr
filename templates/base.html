@@ -1,18 +1,25 @@
 <html>
 <head>
-  <title>Tricklr</title>
- <link rel="stylesheet" type="text/css" href="/static/style/trickle.less" />
- <script src="/static/js/less.js" type="text/javascript"></script>
+    <title>Tricklr</title>
+    <link rel="stylesheet/less" type="text/css" href="/static/style/trickle.less" />
+    <script src="/static/js/less-1.0.41.min.js" type="text/javascript"></script>
 </head>
 
 <body>
-  <div id='menu'>
-    <ul>
-      <li><a href='/accounts/login/'>Login</a></li>
-      <li><a href='/accounts/logout/'>Logout</a></li>
-    </ul>
-  {% block content %}
-  {% endblock %}
+    <div id='menu'>
+        <ul>
+            {% if user.is_authenticated %}
+            <li><a href="/trickle/">{{ user.username }}</a></li>
+            {% else %}
+                <li><a href='/accounts/login/'>Login</a></li>
+            {% endif %}
+            <li><a href='/accounts/logout/'>Logout</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>
 

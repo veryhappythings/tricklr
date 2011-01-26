@@ -7,6 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
+    (r'^$', 'django.views.generic.simple.redirect_to', {'url': '/trickle/'}),
     (r'^trickle/', include('tricklelist.urls')),
     (r'^accounts/', include('accounts.urls')),
 
